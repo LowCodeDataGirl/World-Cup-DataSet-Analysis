@@ -86,20 +86,37 @@ WHERE row_num > 1
 
 
 
+/*
+Query To Check For Misspellings 
 
---Query To Check For Misspellings 
-
-select *  
-from  [Portfolio_Projects ].[dbo].[WorldCupMatches]
-where  Stadium like '%¿½%'
-
-
-
---STADIUM UPDATE FOR MISSPELLINGS 
+There are some Stadium names, cites and team names are wrongly spelt in the table. 
+This query checcks for misspellings in Stadium, city, Home Team Nmae and Away Team Name 
+*/
 
 
---query to update stadium mispelling from Stade Stade Vï¿½lodrome to  
- UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
+SELECT *  
+FROM  [Portfolio_Projects ].[dbo].[WorldCupMatches]
+WHERE [Stadium] like '%¿½%' --This is the common feature amongsts all the misspelled words in Stadium
+
+SELECT *  
+FROM  [Portfolio_Projects ].[dbo].[WorldCupMatches]
+WHERE  [City] like '%¿½%' --This is the common feature amongsts all the misspelled words in City
+
+SELECT *  
+FROM  [Portfolio_Projects ].[dbo].[WorldCupMatches]
+WHERE [Home Team Name] like '%¿½%' --This is the common feature amongsts all the misspelled words in Home Team Name
+
+
+SELECT *  
+FROM  [Portfolio_Projects ].[dbo].[WorldCupMatches]
+WHERE [Away Team Name] like '%¿½%' --This is the common feature amongsts all the misspelled words in Away Team Name
+
+
+
+-- Query To Update The Stadium Column with correct values
+
+
+ UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] -- From Stade Vï¿½lodrome to Stade Velodrome
 SET
       [Stadium]  = 'Stade Velodrome'
 	 
@@ -107,8 +124,7 @@ where Stadium = 'Stade Vï¿½lodrome'
 
 
 
---query to update stadium mispelling from Nou Camp - Estadio Leï¿½n to Estadio Leon 
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]-- From Nou Camp - Estadio Leï¿½n to Estadio Leon 
 SET
       [Stadium]  = 'Estadio Leon '
 	 
@@ -116,117 +132,130 @@ where Stadium = 'Nou Camp - Estadio Leï¿½n'
 
 
 
---query to update stadium mispelling from "Estadio do Maracana"
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--From  'Maracanï¿½ - Estï¿½dio Jornalista Mï¿½rio Filho' to  "Estadio do Maracana"
 SET
       [Stadium]  = 'Estadio do Maracana'
 	 
 where Stadium = 'Maracanï¿½ - Estï¿½dio Jornalista Mï¿½rio Filho'
 
 
-
---query to update stadium mispelling from "Estadio Olï¿½mpico Chateau Carreras" to "Estadio Mario Alberto Kempes"
-
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--From "Estadio Olï¿½mpico Chateau Carreras" to "Estadio Mario Alberto Kempes"
 SET
       [Stadium]  = 'Estadio Mario Alberto Kempes'
 	 
 where Stadium = 'Estadio Olï¿½mpico Chateau Carreras'
 
 
---query to update stadium mispelling from "Estadio Josï¿½ Marï¿½a Minella" to " Estadio Jose Maria Minella"
-
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--From "Estadio Josï¿½ Marï¿½a Minella" to " Estadio Jose Maria Minella"
 SET
       [Stadium]  = ' Estadio Jose Maria Minella '
 	 
 where Stadium = 'Estadio Josï¿½ Marï¿½a Minella'
 
 
---query to update stadium mispelling from "Estadio Olï¿½mpico Universitario" to "Estadio Olïmpico Universitario"
-
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]-- From "Estadio Olï¿½mpico Universitario" to "Estadio Olïmpico Universitario"
 SET
       [Stadium]  = 'Estadio Olïmpico Universitario'
 	 
 where Stadium = 'Estadio Olï¿½mpico Universitario'
 
 
---query to update stadium mispelling from "Estadio Municipal de Balaï¿½dos " to "Estadio Olïmpico Universitario"
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--From "Estadio Municipal de Balaï¿½dos " to "Estadio Olïmpico Universitario"
 
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
 SET
       [Stadium]  = 'Estadio Municipal de Balaïdos'
 	 
 where Stadium = 'Estadio Municipal de Balaï¿½dos'
 
 
---query to check for spaces 
-SELECT * FROM  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
-WHERE CHARINDEX(' ',Stadium) > 0  
 
+--Query To Update The City Column with correct values
 
---QUERY TO REMOVE TRAILING SPACES IN DATASET
-UPDATE [Portfolio_Projects ].[dbo].[WorldCupMatches]
-     
-SET  
-    Year = TRIM( Year),
-    Datetime = TRIM(Datetime),
-	Stage = TRIM(Stage),
-	Stadium = TRIM(Stadium),
-	City = TRIM(City),
-	[Home Team Name] = TRIM([Home Team Name]),
-	[Home Team Goals] = TRIM([Home Team Goals]),
-
-	[Away Team Goals] = TRIM([Away Team Goals]),
-	[Away Team Name] = TRIM([Away Team Name]),
-	[Win conditions] = TRIM([Win conditions]),
-	Attendance = TRIM(Attendance ),
-	[Half-time Home Goals] = TRIM([Half-time Home Goals]),
-	[Half-time Away Goals] = TRIM([Half-time Away Goals]),
-	[Referee] = TRIM([Referee]),
-	[Assistant 1] =TRIM ([Assistant 1]),
-	[Assistant 2] =TRIM ([Assistant 2]),
-	[RoundID] = TRIM([RoundID]),
-	[MatchID] = TRIM([MatchID]),
-	[Home Team Initials] = TRIM([Home Team Initials]),
-	[Away Team Initials] = TRIM([Away Team Initials])
-
-	--CITY QUERIES FOR MISSPELLINGS 
-
---Query to update Malmï¿½' to Malmo
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--From Malmï¿½' to Malmo
 SET
       City  = 'Malmo'
 	 
 where City = 'Malmï¿½'
 
 
---Query to update Norrkï¿½Ping to Norrkoping
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--From Norrkï¿½Ping to Norrkoping
 SET
       City  = 'Norrkoping'
 	 
 where City = 'Norrkï¿½Ping'
 
 
---Query to update Dï¿½Sseldorf to Dusseldorf
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--From Dï¿½Sseldorf to Dusseldorf
 SET
       City  = 'Dusseldorf'
 	 
 where City = 'Dï¿½Sseldorf'
 
---Query to update La Coruï¿½A to La Coruna
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
+
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--From La Coruï¿½A to La Coruna
 SET
       City  = 'La Coruna'
 	 
 where City = 'La Coruï¿½A'
 
 
---QUERY TO CHANGE WRONG INFO IN STADIUM COLUMNS FROM CITY TO STADIUM
 
+--Query To Update The Home Team Name Column with correct values
+
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--From  Cï¿½te d'Ivoire to Cote D'Ivoire
+SET
+      [Home Team Name]  = 'Cote d''Ivoire' --use double quotes because of the (') in cote d'ivoire which will return an error without the extra (')
+WHERE [Home Team Name] = 'Cï¿½te d''Ivoire' 
+
+
+
+ --Query To Update Away Team Name Column With Correct Values
+ 
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]-- Cï¿½te d'Ivoire To Cote d''Ivoire
+SET
+      [Away Team Name]  = 'Cote d''Ivoire'
+	 
+where [Away Team Name] = 'Cï¿½te d''Ivoire' -- use double quotes because of the (') in cote d'ivoire which will return an error without the extra (')
+
+
+
+
+/* Query To Remove extra characters in the [Home Team Name] Column and [Away Team Name] columns
+Both Columns have some extra characters ("rn"">) in front and (") extra character behind 
+The Queries below remove the extra characters in the columns
+*/
+
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]  
+SET
+      
+      [Home Team Name]  =  SUBSTRING([Home Team Name],1, LEN([Home Team Name])-1) 
+WHERE [Home Team Name] like '%"rn"">'  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--QUERY TO CHANGE WRONG INFO IN STADIUM COLUMNS FROM CITY TO STADIUM
+-- Query To Update Column Names
 
 select *--query to find wrong stadium name(It showed country instead of stadium)
 from  [Portfolio_Projects ].[dbo].[WorldCupMatches]
@@ -278,25 +307,19 @@ WHERE Stadium = '"FIFA World Cup Stadium  Gelsenkirchen"'
 
 
 
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to update home team name from  Cï¿½te d'Ivoire to Cote D'Ivoire
-SET
-      [Home Team Name]  = 'Cote d''Ivoire'
-WHERE [Home Team Name] = 'Cote DIvoire' ----use double quotes because of the (') in cote d'ivoire to remove the error
-
-
-select *
-from [Portfolio_Projects ].[dbo].[WorldCupMatches]---- Query to update the match for thrd lace stage and make them uniform 
-where Stage like '%Third%'
-order by Year desc
 
 
 
 
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to update home team name from  remove ("rn"">)
-SET
-      
-      [Home Team Name]  =  SUBSTRING([Home Team Name],1, LEN([Home Team Name])-1) 
-WHERE [Home Team Name] like '%"rn"">'  
+
+
+
+
+
+
+
+
+
 
 
  UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to join germany and germany fr 
@@ -349,13 +372,44 @@ SET-- update runs the first seven word removal but not the remove letter N
 WHERE [Away Team Name] like '%"%'  
 
 
- --Query to update away teamname  Cï¿½te d'Ivoire to Cote d''Ivoire
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
-SET
-      [Away Team Name]  = 'Cote d''Ivoire'
-	 
-where [Away Team Name] = 'Cï¿½te d''Ivoire' --use double apostrophe cause of the cote divoire 
 
+
+
+
+
+
+--query to check for spaces 
+SELECT * FROM  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
+WHERE CHARINDEX(' ',Stadium) > 0  
+
+
+--QUERY TO REMOVE TRAILING SPACES IN DATASET
+UPDATE [Portfolio_Projects ].[dbo].[WorldCupMatches]
+     
+SET  
+    Year = TRIM( Year),
+    Datetime = TRIM(Datetime),
+	Stage = TRIM(Stage),
+	Stadium = TRIM(Stadium),
+	City = TRIM(City),
+	[Home Team Name] = TRIM([Home Team Name]),
+	[Home Team Goals] = TRIM([Home Team Goals]),
+
+	[Away Team Goals] = TRIM([Away Team Goals]),
+	[Away Team Name] = TRIM([Away Team Name]),
+	[Win conditions] = TRIM([Win conditions]),
+	Attendance = TRIM(Attendance ),
+	[Half-time Home Goals] = TRIM([Half-time Home Goals]),
+	[Half-time Away Goals] = TRIM([Half-time Away Goals]),
+	[Referee] = TRIM([Referee]),
+	[Assistant 1] =TRIM ([Assistant 1]),
+	[Assistant 2] =TRIM ([Assistant 2]),
+	[RoundID] = TRIM([RoundID]),
+	[MatchID] = TRIM([MatchID]),
+	[Home Team Initials] = TRIM([Home Team Initials]),
+	[Away Team Initials] = TRIM([Away Team Initials])
+
+	
 
 
 --CHANGE TO DETAILS IN AWAY TEAM COLUMN 
@@ -408,3 +462,8 @@ WHERE [Away Team Name] = 'Zaire'
  from  [Portfolio_Projects ].[dbo].[WorldCupMatches]
  where [Away Team Name] like '%¿½%'
  
+ 
+ select *
+from [Portfolio_Projects ].[dbo].[WorldCupMatches]---- Query to update the match for thrd lace stage and make them uniform 
+where Stage like '%Third%'
+order by Year desc
