@@ -31,6 +31,36 @@ where Stadium = '"FIFA World Cup Stadium' --Use "FIFA Stadium... instead of [Yea
 
 
 
+--This query removes the trailiing spaces in the table. 
+ 
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]
+     
+SET  
+        [Year]                 = TRIM( Year),
+        [Datetime]             = TRIM(Datetime),
+        [Stage]                = TRIM(Stage),
+	[Stadium]              = TRIM(Stadium),
+	[City]                 = TRIM(City),
+	[Home Team Name]       = TRIM([Home Team Name]),
+	[Home Team Goals]      = TRIM([Home Team Goals]),
+
+	[Away Team Goals]      = TRIM([Away Team Goals]),
+	[Away Team Name]       = TRIM([Away Team Name]),
+	[Win conditions]       = TRIM([Win conditions]),
+	Attendance             = TRIM(Attendance ),
+	[Half-time Home Goals] = TRIM([Half-time Home Goals]),
+	[Half-time Away Goals] = TRIM([Half-time Away Goals]),
+	[Referee]              = TRIM([Referee]),
+	[Assistant 1]          = TRIM ([Assistant 1]),
+	[Assistant 2]          = TRIM ([Assistant 2]),
+	[RoundID]              = TRIM([RoundID]),
+	[MatchID]              = TRIM([MatchID]),
+	[Home Team Initials]   = TRIM([Home Team Initials]),
+	[Away Team Initials]   = TRIM([Away Team Initials])
+
+
+
+
 /*
 Query To Find Duplicates Per Column 
 
@@ -455,32 +485,6 @@ WHERE CHARINDEX(' ',Stadium) > 0
 
 
 
---This query removes the trailiing spaces in the table. 
- 
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]
-     
-SET  
-        [Year]                 = TRIM( Year),
-        [Datetime]             = TRIM(Datetime),
-        [Stage]                = TRIM(Stage),
-	[Stadium]              = TRIM(Stadium),
-	[City]                 = TRIM(City),
-	[Home Team Name]       = TRIM([Home Team Name]),
-	[Home Team Goals]      = TRIM([Home Team Goals]),
-
-	[Away Team Goals]      = TRIM([Away Team Goals]),
-	[Away Team Name]       = TRIM([Away Team Name]),
-	[Win conditions]       = TRIM([Win conditions]),
-	Attendance             = TRIM(Attendance ),
-	[Half-time Home Goals] = TRIM([Half-time Home Goals]),
-	[Half-time Away Goals] = TRIM([Half-time Away Goals]),
-	[Referee]              = TRIM([Referee]),
-	[Assistant 1]          = TRIM ([Assistant 1]),
-	[Assistant 2]          = TRIM ([Assistant 2]),
-	[RoundID]              = TRIM([RoundID]),
-	[MatchID]              = TRIM([MatchID]),
-	[Home Team Initials]   = TRIM([Home Team Initials]),
-	[Away Team Initials]   = TRIM([Away Team Initials])
 
 	
 
