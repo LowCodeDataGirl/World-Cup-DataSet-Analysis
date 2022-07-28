@@ -338,13 +338,13 @@ WHERE Stadium = '"FIFA World Cup Stadium  Cologne"'
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to update stadium from "FIFA World Cup Stadium  Dortmund" to Signal Iduna Park
 SET
       [Stadium]  =  'Signal Iduna Park'
-WHERE City = '"FIFA World Cup Stadium  Dortmund"'-- we used city because we also needed to update Westfalenstadion(old name) to Signal Iduna Park 
+WHERE City = 'Dortmund'-- we used city because we also needed to update Westfalenstadion(old name) to Signal Iduna Park 
 
 
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to update stadium from "FIFA World Cup Stadium  Frankfurt" to Signal Iduna Park
 SET
       [Stadium]  =  'Deutsche Bank Park'
-WHERE City = '"FIFA World Cup Stadium  Frankfurt/Main"'-- we used city because we also needed to update Waldstadion(old name) to Deutsche Bank Park(new name) 
+WHERE City = 'Frankfurt/Main'-- we used city because we also needed to update Waldstadion(old name) to Deutsche Bank Park(new name) 
 
 
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to update stadium from "FIFA World Cup Stadium  Hamburg" to Volksparkstadion
@@ -355,7 +355,7 @@ WHERE Stadium = '"FIFA World Cup Stadium  Hamburg"'
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to update stadium from "FIFA World Cup Stadium  Hanover" to HDI Arena
 SET
       [Stadium]  =  'HDI Arena'
-WHERE City = '"FIFA World Cup Stadium  Hanover"'-- we used city because we also needed to update Niedersachsenstadion(old name) to  HDI Arena(new name) 
+WHERE City = 'Hanover'-- we used city because we also needed to update Niedersachsenstadion(old name) to  HDI Arena(new name) 
 
 
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to update stadium from "FIFA World Cup Stadium  Gelsenkirchen" to Veltins-Arena
@@ -453,40 +453,16 @@ WHERE [Away Team Name] = 'China PR'
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to change  Zaire to Congo DR 
 SET
       
-      [Away Team Name]   = 'Congo DR
+      [Away Team Name]   = 'Congo DR'
 WHERE   [Away Team Name] = 'Zaire'
 
 
 
-
-/*
-Query To Remove Extra Characters in Home and Away Team Names
-This query removes the extra ("rn"">) in front and the extra (")
-behind the names of home and away team columns
-*/
-
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
-SET   
-      [Away Team Name]  =  SUBSTRING([Away Team Name],7, LEN([Away Team Name])-3)--I'm not sure why but the query only removed the (") at the end at (-3) not (-1)
-WHERE [Away Team Name] like '%"%'  
-
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
-SET   
-      [Home Team Name]  =  SUBSTRING([Home Team Name],1, LEN([Home Team Name])-3)--I'm not sure why but the query only removed the (") at the end at (-3) not (-1)
-WHERE [Home Team Name] like '%"%'  
-
-
-
---This query to checks for spaces in the table 
+--This Query is Used To Checks For Spaces In The Table 
 
 SELECT * 
 FROM  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
 WHERE CHARINDEX(' ',Stadium) > 0  
-
-
-
-
-	
 
 
 
