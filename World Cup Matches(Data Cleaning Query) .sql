@@ -219,19 +219,62 @@ where [Away Team Name] = 'Cï¿½te d''Ivoire' -- use double quotes because of t
 
 
 
+--Query to check for extra characters in home and away columns
+
+SELECT DISTINCT [Home Team Name] 
+FROM [Portfolio_Projects ].[dbo].[WorldCupMatches] 
+WHERE [Home Team Name] like '"rn"">%"' 
+
+
 
 /* Query To Remove extra characters in the [Home Team Name] Column and [Away Team Name] columns
 Both Columns have some extra characters ("rn"">) in front and (") extra character behind 
-The Queries below remove the extra characters in the columns
+ 
 */
+--This query removes the extra characters in front in Home team name column 
 
 UPDATE [Portfolio_Projects ].[dbo].[WorldCupMatches]  
 SET
       
-       [Home Team Name]  = SUBSTRING([Home Team Name],1, LEN([Home Team Name])-1) 
+       [Home Team Name]  = SUBSTRING([Home Team Name],7, 40)
 WHERE  [Home Team Name] like '%"rn"">'  
 
 
+--This query removes the extra characters behind in Home Team Name column  
+
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
+SET
+      
+        [Home Team Name]  =  SUBSTRING([Home Team Name],1,LEN([Home Team Name])-1) 
+WHERE   [Home Team Name] like '%"' 
+
+--This query removes the extra characters in front in Away Team Name column 
+
+UPDATE [Portfolio_Projects ].[dbo].[WorldCupMatches]  
+SET
+      
+       [Away Team Name]  = SUBSTRING([Away Team Name],7, 40)
+WHERE  [Away Team Name] like '%"rn"">'  
+
+
+--This query removes the extra characters behind in Away Team Name column  
+
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
+SET
+      
+        [Away Team Name]  =  SUBSTRING([Away Team Name],1,LEN([Away Team Name])-1) 
+WHERE   [Away Team Name] like '%"' 
+
+
+/*
+NOTE: You tried removing both extra characters with the query below but it removed only the front characters and not the ones behind
+ 
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
+SET
+      
+        [Away Team Name]  =  SUBSTRING([Away Team Name],7,LEN([Away Team Name])-1) 
+WHERE   [Away Team Name] like '"rn"">%"' 
+*/
 
 /*
 Query To Change Outdated Stadium Names
@@ -394,7 +437,7 @@ behind the names of home and away team columns
 
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
 SET   
-      [Away Team Name]  =  SUBSTRING([Away Team Name],1, LEN([Away Team Name])-3)--I'm not sure why but the query only removed the (") at the end at (-3) not (-1)
+      [Away Team Name]  =  SUBSTRING([Away Team Name],7, LEN([Away Team Name])-3)--I'm not sure why but the query only removed the (") at the end at (-3) not (-1)
 WHERE [Away Team Name] like '%"%'  
 
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
