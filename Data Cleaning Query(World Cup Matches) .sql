@@ -253,7 +253,7 @@ where [Away Team Name] = 'Cï¿½te d''Ivoire' -- use double quotes because of t
 
 SELECT DISTINCT [Home Team Name] 
 FROM [Portfolio_Projects ].[dbo].[WorldCupMatches] 
-WHERE [Home Team Name] like '"rn"">%"' 
+WHERE [Home Team Name] like '%"rn"">%"' 
 
 
 
@@ -267,7 +267,7 @@ UPDATE [Portfolio_Projects ].[dbo].[WorldCupMatches]
 SET
       
        [Home Team Name]  = SUBSTRING([Home Team Name],7, 40)
-WHERE  [Home Team Name] like '%"rn"">'  
+WHERE  [Home Team Name] like '%"rn"">%'  
 
 
 --This query removes the extra characters behind in Home Team Name column  
@@ -284,7 +284,7 @@ UPDATE [Portfolio_Projects ].[dbo].[WorldCupMatches]
 SET
       
        [Away Team Name]  = SUBSTRING([Away Team Name],7, 40)
-WHERE  [Away Team Name] like '%"rn"">'  
+WHERE  [Away Team Name] like '%"rn"">%'  
 
 
 --This query removes the extra characters behind in Away Team Name column  
