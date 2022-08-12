@@ -1,6 +1,3 @@
-
-
-
 --Do Certain Cities Draw Bigger Crowds
 
 --The Top results in this query will show which cities had the most attendance on average.
@@ -71,7 +68,7 @@ ORDER BY [Away Team Name] ASC
 -- This query below sums total half time goals in home and away columns by Teams
  
 
-SELECT [Home Team Name],SUM( cast ([Half-time Home Goals] as int)) as SumHalfTimeGoals  
+SELECT [Home Team Name],sum( cast ([Half-time Home Goals] as int)) as SumHalfTimeGoals  
 FROM  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
 GROUP BY [Home Team Name]
 Order by [SumHalfTimeGoals] DESC
@@ -89,73 +86,71 @@ Order by [SumHalfTimeGoals] DESC
 
 --Do any teams seem to be stronger in either the first half or the second half? (think about both offense and defense)
 
-Do any teams seem to be stronger in either the first half or the second half? (think about both offense and defense)
- I had to create a CTE to create the table with the tables i needed to answer this question.
-The name of the CTE is HalfTimeGoals and I got the 2nd half goals by subtracting Home team goals and 1st half goals 
- */
 
-WITH HalfTimeGoals   --This query gives the result of the home teams with the most first half wins    
-
-([Home Team Name],
-[1st Half Home Goals],
-[2nd Half Home Goals],
-[Home Team Goals],
-[Away Team Name],
-[1st Half Away Goals],
-[2nd Half Away Goals],
-[Away Team Goals]
-)
-AS
-(
-SELECT     [Home Team Name],
-           cast([Half-time Home Goals]as int) as [1st Half Home Goals],
-           cast([Home Team Goals] as int)-cast([Half-time Home Goals] as int) as [2nd Half Home Goals],
-		   cast([Home Team Goals]as int),
-		   [Away Team Name],
-		   cast([Half-time Away Goals]as int) as [1st Half Away Goals],
-		   cast([Away Team Goals]as int)- cast([Half-time Away Goals]as int) as [2nd Half Away Goals],
-		   cast([Away Team Goals]as int)
-
- FROM [Portfolio_Projects].[dbo].[WorldCupMatches]
- )
-
- SELECT [Home Team Name], COUNT([1st Half Home Goals]) AS [Number of 1st Half Home Wins]
- FROM  HalfTimeGoals 
- WHERE [1st Half Home Goals] > [1st Half Away Goals]--the format for offense was when 
- GROUP BY [Home Team Name]
- ORDER BY [Number of 1st Half Home Wins] DESC
+/* This query finds the most offensive teams in first half of the world cup. It sums the result of 
+( home teams that scored the most(offensive) + away team that scored the most(offensive) )
+I had to dig through google and stackoverflow to make this work. If there are better queries to do this, Im open   
  
+*/
+SELECT  [Home Team Name] , SUM([Number of 1st Half Wins]) AS [1st Half Most Offensive Teams] --(This sum query sums the result of offensive home team and offensive away team )
+FROM 
+        ( 
+          SELECT [Home Team Name], COUNT([Half-time Home Goals]) AS [Number of 1st Half Wins]--This query counts the number of times the home team scored more than the away team to know the most offensive home team 
+          FROM Portfolio_Projects.dbo.WorldCupMatches
+          WHERE [Half-time Home Goals] > [Half-time Away Goals]
+          GROUP BY  [Home Team Name] 
+	           UNION ALL
+	      SELECT [Away Team Name], COUNT([Half-time Away Goals]) AS [Number of 1st Half  Wins] --This query counts the number of times the away team scored more than the home team to know the most offensive away team 
+          FROM Portfolio_Projects.dbo.WorldCupMatches
+          WHERE [Half-time Away Goals] > [Half-time Home Goals]
+          GROUP BY  [Away Team Name]  
+		  ) s
 
-WITH HalfTimeGoals   --This query gives the result of the away teams with the most first half wins    
+GROUP BY [Home Team Name]--This query groups the results by Home Team Name
+ORDER BY SUM([Number of 1st Half Wins] ) DESC -- This orders the results in desc order to show top offensive teams 
 
-([Home Team Name],
-[1st Half Home Goals],
-[2nd Half Home Goals],
-[Home Team Goals],
-[Away Team Name],
-[1st Half Away Goals],
-[2nd Half Away Goals],
-[Away Team Goals]
-)
-AS
-(
-SELECT     [Home Team Name],
-           cast([Half-time Home Goals]as int) as [1st Half Home Goals],
-           cast([Home Team Goals] as int)-cast([Half-time Home Goals] as int) as [2nd Half Home Goals],
-		   cast([Home Team Goals]as int),
-		   [Away Team Name],
-		   cast([Half-time Away Goals]as int) as [1st Half Away Goals],
-		   cast([Away Team Goals]as int)- cast([Half-time Away Goals]as int) as [2nd Half Away Goals],
-		   cast([Away Team Goals]as int)
 
- FROM [Portfolio_Projects].[dbo].[WorldCupMatches]
- )
 
- SELECT [Home Team Name], COUNT([1st Half Away Goals]) AS [Number of 1st Half Away Wins]
- FROM  HalfTimeGoals 
- WHERE [1st Half Away Goals] > [2nd Half Away Goals]--the format for offense was when 
- GROUP BY [Home Team Name]
- ORDER BY [Number of 1st Half Away Wins] DESC
  
+ /* This query finds the most defensive teams in the second half of the world cup. It sums the result of 
+( home teams that conceded the least(defensive) in first half + away team that conceded less(defensive) in first half )
+I had to dig through google and stackoverflow to make this work. If there are better queries to do this, Im open   
+ 
+*/
+ --This query finds the most defensive home team in 1st half by counting the nuber of times the home team conceded less to the away team
+  SELECT [Home Team Name], COUNT([Half-time Home Goals]) AS [Number of 2nd Half Wins]--This query counts the number of times the home team scored more than the away team to know the most offensive home team 
+          FROM Portfolio_Projects.dbo.WorldCupMatches
+          WHERE [Half-time Away Goals]  <  [Half-time Home Goals] --the team that was scored less
+          GROUP BY  [Home Team Name] 
+		  order by  [Number of 2nd Half Wins] desc
 
---NOTE: Find a query to sum the results of both query by Country 
+
+--This query finds the most defensive away team in 1st half by counting the nuber of times the away team conceded less to the home team 
+  SELECT [Away Team Name], COUNT([Half-time Away Goals]) AS [Number of 2nd Half  Wins] --This query counts the number of times the away team scored more than the home team to know the most offensive away team 
+          FROM Portfolio_Projects.dbo.WorldCupMatches
+          WHERE [Half-time Home Goals]  < [Half-time Away Goals]  
+          GROUP BY  [Away Team Name]  
+ order by [Number of 2nd Half  Wins] desc
+
+  
+--This query finds the most defensive team in first half by counting the number of times each team conceded less in both home and away 
+
+
+SELECT  [Home Team Name] , SUM([Number of 2nd Half Wins]) AS [1st Half Most Defensive Teams] --(This sum query sums the result of offensive home team and offensive away team )
+FROM 
+        ( 
+         SELECT [Home Team Name], COUNT([Half-time Home Goals]) AS [Number of 2nd Half Wins]--This query counts the number of times the home team scored more than the away team to know the most offensive home team 
+          FROM Portfolio_Projects.dbo.WorldCupMatches
+          WHERE [Half-time Away Goals]  <  [Half-time Home Goals] --the team that was scored less
+          GROUP BY  [Home Team Name] 
+	           UNION ALL
+	      SELECT [Away Team Name], COUNT([Half-time Away Goals]) AS [Number of 2nd Half  Wins] --This query counts the number of times the away team scored more than the home team to know the most offensive away team 
+          FROM Portfolio_Projects.dbo.WorldCupMatches
+          WHERE [Half-time Home Goals]  < [Half-time Away Goals]  
+          GROUP BY  [Away Team Name]  
+		  ) s
+
+GROUP BY [Home Team Name]--This query groups the results by Home Team Name
+ORDER BY  [1st Half Most Defensive Teams]  DESC -- This orders the results in desc order to show top offensive teams 
+
+
