@@ -216,7 +216,15 @@ ORDER BY  [2nd Half Most Offensive Teams]  DESC -- This orders the results in de
 
 
 
+--Which teams have won the most games (check if you can group similar items like germany and germany dr)
 
+select [Win conditions],COUNT([Win conditions]) as NumberOfWins
+from Portfolio_Projects.dbo.WorldCupMatches
+where [Win conditions] not in ('Draw' )
+
+GROUP BY [Win conditions]
+
+order by COUNT([Win conditions]) desc
 
 
 
