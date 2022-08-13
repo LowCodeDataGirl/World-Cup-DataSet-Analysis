@@ -473,3 +473,65 @@ SET
 WHERE [Stage] like '%Third%'
 
 
+
+
+
+--WIN CONDITIONS 
+
+
+--This query updates [win conditions] to show home team name + won where home team won 
+UPDATE Portfolio_Projects.dbo.WorldCupMatches
+SET
+    [Win conditions] = concat([Home Team Name], ' ', 'wins')
+
+where [Home Team Goals] > [Away Team Goals]
+
+
+
+--This query updates [win conditions] to show away team name + won where away team won 
+UPDATE Portfolio_Projects.dbo.WorldCupMatches
+SET
+    [Win conditions] = concat([Away Team Name], ' ', 'wins')
+
+where [Away Team Goals] > [Home Team Goals]
+
+
+
+
+
+--This query updates [win conditions] to show away team name + won where away team won except the rows that are wins by penalty 
+UPDATE Portfolio_Projects.dbo.WorldCupMatches
+SET
+    [Win conditions] = 'Draw'
+
+where [Win conditions]  not like ('%penalties%') and [Away Team Goals] = [Home Team Goals]
+
+
+
+--This query checks for penalty wins that the team that won wasnt specified 
+select *
+
+from Portfolio_Projects.dbo.WorldCupMatches
+where    [Win conditions] like 'win on penalties%'
+
+
+--This query updates [win conditions] to show home team name + win on penalties where the home team won 
+UPDATE Portfolio_Projects.dbo.WorldCupMatches
+SET
+    [Win conditions] = concat([Home Team Name], ' ', [Win conditions])
+
+where [Win conditions] in( 'win on penalties (5 - 4)', 'win on penalties (4 - 3)')
+
+--This query updates [win conditions] to show away team name + win on penalties where the away team won penalties
+UPDATE Portfolio_Projects.dbo.WorldCupMatches
+SET
+    [Win conditions] = concat([Away Team Name], ' ', [Win conditions])
+
+where [Win conditions] in( 'win on penalties (2 - 3)', 'win on penalties (3 - 4)')
+
+
+
+
+
+
+
