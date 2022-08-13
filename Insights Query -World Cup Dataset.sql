@@ -230,3 +230,43 @@ order by COUNT([Win conditions]) desc
 
 
 
+
+--Which teams have won the most games  
+
+select [Win conditions],COUNT([Win conditions]) as NumberOfWins
+from Portfolio_Projects.dbo.WorldCupMatches
+where [Win conditions] not in ('Draw' )
+
+GROUP BY [Win conditions]
+
+order by COUNT([Win conditions]) desc
+
+
+--This query updates the draws that did
+UPDATE Portfolio_Projects.dbo.WorldCupMatches
+SET
+    [Win conditions] = 'Draw'
+
+where [Away Team Goals] = [Home Team Goals]
+
+
+
+
+--How has number of wins by country trended over time?
+
+SELECT   [Year],[Win conditions] , COUNT([Win conditions]) as NumberOfWins
+FROM     [Portfolio_Projects ].[dbo].[WorldCupMatches] 
+where [Win conditions] not in ('Draw' )
+GROUP BY [Year],[Win conditions]
+ORDER By [Win conditions], [Year]
+
+
+
+
+
+
+
+
+
+
+
