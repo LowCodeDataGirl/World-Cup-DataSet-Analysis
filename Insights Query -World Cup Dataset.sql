@@ -115,7 +115,7 @@ ORDER BY SUM([Number of 1st Half Wins] ) DESC -- This orders the results in desc
  /* This query finds the most defensive teams in the second half of the world cup. It sums the result of 
 ( home teams that conceded the least(defensive) in first half + away team that conceded less(defensive) in first half )
 I had to dig through google and stackoverflow to make this work. If there are better queries to do this, Im open   
- 
+ NOTE: The top offensive and defensive teams were the same after running the queries so we are looking for the strongest teams in first half and second half since top offense and defense are same 
 */
  --This query finds the most defensive home team in 1st half by counting the nuber of times the home team conceded less to the away team
   SELECT [Home Team Name], COUNT([Half-time Home Goals]) AS [Number of 2nd Half Wins]--This query counts the number of times the home team scored more than the away team to know the most offensive home team 
@@ -152,5 +152,73 @@ FROM
 
 GROUP BY [Home Team Name]--This query groups the results by Home Team Name
 ORDER BY  [1st Half Most Defensive Teams]  DESC -- This orders the results in desc order to show top offensive teams 
+
+
+ --This query adds the columns 2nd half home goals and 2nd half away goals 
+ ALTER TABLE Portfolio_Projects.dbo.WorldCupMatches
+ ADD [2nd Half Home Goals] int,
+    [2nd Half Away Goals] int
+
+
+
+
+
+
+-- Query to insert data in the 2nd half home and away goals column 
+UPDATE Portfolio_Projects.dbo.WorldCupMatches
+
+SET
+ [2nd Half Home Goals] = cast([Home Team Goals]as int)-cast([Half-time Home Goals]as int),
+ [2nd Half Away Goals] = cast([Away Team Goals]as int) - cast([Half-time Away Goals]as int)
+
+
+
+
+
+
+
+
+ --This Query finds the most offensive team in 2nd half by counting how many times the home team scoed more than the away team 
+  SELECT [Home Team Name], COUNT( [2nd Half Home Goals]) AS [Number of 2nd Half Wins]--This query counts the number of times the home team scored more than the away team to know the most offensive home team 
+          FROM Portfolio_Projects.dbo.WorldCupMatches
+          WHERE  [2nd Half Home Goals] >   [2nd Half Away Goals]   
+          GROUP BY  [Home Team Name] 
+		  order by  [Number of 2nd Half Wins] desc
+
+
+--This query finds the most team in 2nd half by counting how many times the away team scoed more than the home team 
+  SELECT [Away Team Name], COUNT( [2nd Half Away Goals]) AS [Number of 2nd Half  Wins] --This query counts the number of times the away team scored more than the home team to know the most offensive away team 
+          FROM Portfolio_Projects.dbo.WorldCupMatches
+          WHERE  [2nd Half Away Goals]  > [2nd Half Home Goals] 
+          GROUP BY  [Away Team Name]  
+ order by [Number of 2nd Half  Wins] desc
+
+  
+--This query finds the most offensive team in 2nd half by counting the number of times both home and away teams scored in 2nd half 
+
+SELECT  [Home Team Name] , SUM([Number of 2nd Half Wins]) AS [2nd Half Most Offensive Teams] --(This sum query sums the result of offensive home team and offensive away team )
+FROM 
+        ( 
+         SELECT [Home Team Name], COUNT( [2nd Half Home Goals]) AS [Number of 2nd Half Wins]--This query counts the number of times the home team scored more than the away team to know the most offensive home team 
+          FROM Portfolio_Projects.dbo.WorldCupMatches
+          WHERE  [2nd Half Home Goals] >   [2nd Half Away Goals]   
+          GROUP BY  [Home Team Name] 
+		  
+	           UNION ALL
+	       SELECT [Away Team Name], COUNT( [2nd Half Away Goals]) AS [Number of 2nd Half  Wins] --This query counts the number of times the away team scored more than the home team to know the most offensive away team 
+          FROM Portfolio_Projects.dbo.WorldCupMatches
+          WHERE  [2nd Half Away Goals]  > [2nd Half Home Goals] 
+          GROUP BY  [Away Team Name] 
+		  ) s
+
+GROUP BY [Home Team Name]--This query groups the results by Home Team Name
+ORDER BY  [2nd Half Most Offensive Teams]  DESC -- This orders the results in desc order to show top offensive teams 
+
+
+
+
+
+
+
 
 
