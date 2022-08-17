@@ -508,6 +508,367 @@ where [Player Name] = 'IBIï¿½EVI?'
 
 
 
+--This query updates player name from SIMï¿½O to SIMAO
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'SIMAO'
+ 
+where [Player Name] = 'SIMï¿½O'  
+
+
+--This query updates player name from F. COENTRï¿½O to FABIO COENTRAO
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'FABIO COENTRAO'
+ 
+where [Player Name] = 'F. COENTRï¿½O'  
+
+
+--This query updates player name from ï¿½DER to EDER
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'EDER'
+ 
+where [Player Name] = 'ï¿½DER'  
+
+
+
+--SLOVENIA
+
+
+--This query updates player name from Dï¿½INI? to ELVEDIN DZINIC
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'ELVEDIN DZINIC'
+ 
+where [Player Name] = 'Dï¿½INI?'  
+
+
+--This query updates player name from ï¿½ULER to MARKO SULER
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'MARKO SULER'
+ 
+where [Player Name] = 'ï¿½ULER'  
+
+
+--This query updates player name from ï¿½ELIGA to ALEKSANDER SELIGA
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'ALEKSANDER SELIGA'
+ 
+where [Player Name] = 'ï¿½ELIGA' 
+
+--This query updates player name from MATAVï¿½ to TIM MATAVZ
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'TIM MATAVZ'
+ 
+where [Player Name] = 'MATAVï¿½'  
+
+
+
+
+--SERBIA
+
+
+--This query updates player name from MILIJAï¿½ to NENAD MILIJAS
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'NENAD MILIJAS'
+ 
+where [Player Name] = 'MILIJAï¿½'  
+
+
+--This query updates player name from TOï¿½I? to ZORAN TOSIC
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'ZORAN TOSIC'
+ 
+where [Player Name] = 'TOï¿½I?'  
+
+
+--This query updates player name from ï¿½IGI? to NIKOLA ZIGIC
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'NIKOLA ZIGIC'
+ 
+where [Player Name] = 'ï¿½IGI?'  
+
+
+
+--SPAIN
+
+
+--This query updates player name from PIQUï¿½ to GERARD PIQUE
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'GERARD PIQUE'
+ 
+where [Player Name] = 'PIQUï¿½'  
+
+
+--This query updates player name from ETXEBERRï¿½A to ETXEBERRIA
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'ETXEBERRIA'
+ 
+where [Player Name] = 'ETXEBERRï¿½A'  
+
+
+--This query updates player name from CAï¿½IZARES to CANIZARES
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'CANIZARES'
+ 
+where [Player Name] = 'CAï¿½IZARES'  
+
+
+ --This query updates player name from JAVI MARTï¿½NEZ to JAVI MARTINEZ
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'JAVI MARTINEZ'
+ 
+where [Player Name] = 'JAVI MARTï¿½NEZ'  
+
+
+--This query updates player name from Fï¿½BREGAS to CESC FABREGAS
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'CESC FABREGAS'
+ 
+where [Player Name] = 'Fï¿½BREGAS'  
+
+
+
+--MEXICO
+--This query updates player name from Hugo Sï¿½NCHEZ to Hugo SANCHEZ
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'Hugo SANCHEZ'
+ 
+where [Player Name] = 'Hugo Sï¿½NCHEZ'  
+
+
+--This query updates player name from C. PEï¿½A to CARLOS PENA
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'CARLOS PENA'
+ 
+where [Player Name] = 'C. PEï¿½A'  
+
+
+
+
+
+--DENMARK
+
+ 
+--This query updates player name from KJï¿½R to SIMON KJAER
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'SIMON KJAER'
+ 
+where [Player Name] = 'KJï¿½R'  
+
+ 
+
+--This query updates player name from GRï¿½NKJï¿½R to JESPER CHRISTIANSEN
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'SIMON KJAER'
+ 
+where [Player Name] = 'GRï¿½NKJï¿½R'  
+
+
+--This query updates player name from Sï¿½RENSEN to THOMAS SORENSEN
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'THOMAS SORENSEN'
+ 
+where [Player Name] = 'Sï¿½RENSEN'  
+
+
+--This query updates player name from Jï¿½RGENSEN to  MARTIN JORGENSEN
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'MARTIN JORGENSEN'
+ 
+where [Player Name] = 'Jï¿½RGENSEN'  
+
+
+--This query updates player name from KRï¿½LDRUP to PER KROLDRUP
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'PER KROLDRUP'
+ 
+where [Player Name] = 'KRï¿½LDRUP'  
+
+
+
+
+
+
+
+--SWEDEN
+
+--This query updates player name from ALLBï¿½CK to MARCUS ALLBACK
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'MARCUS ALLBACK'
+ 
+where [Player Name] = 'ALLBï¿½CK'  
+
+
+--This query updates player name from ALVBï¿½GE to JOHN ALVBAGE
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'JOHN ALVBAGE'
+ 
+where [Player Name] = 'ALVBï¿½GE'  
+
+
+--This query updates player name from Jï¿½RGENSEN to KIM KALLSTROM 
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'MARTIN JORGENSEN'
+ 
+where [Player Name] = 'Kï¿½LLSTRï¿½M'  
+
+
+ 
+
+
+--CHILE 
+
+--This query updates player name from GUTIï¿½RREZ to FELIPE GUTIERREZ
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'FELIPE GUTIERREZ'
+ 
+where [Player Name] = 'GUTIï¿½RREZ'  
+
+
+--This query updates player name from CH. ARï¿½NGUIZ to CHARLES ARANGUIZ
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'CHARLES ARANGUIZ'
+ 
+where [Player Name] = 'CH. ARï¿½NGUIZ'  
+
+
+
+--PARAGUAY
+
+--This query updates player name from NUï¿½EZ to JORGE NUNEZ
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'JORGE NUNEZ'
+ 
+where [Player Name] = 'NUï¿½EZ'  
+
+
+--This query updates player name from CABAï¿½AS to SALVADOR CABANAS
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'SALVADOR CABANAS'
+ 
+where [Player Name] = 'CABAï¿½AS'  
+
+
+--This query updates player name from CAï¿½IZA to DENIS CANIZA
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'DENIS CANIZA'
+ 
+where [Player Name] = 'CAï¿½IZA'  
+
+
+--This query updates player name from Cï¿½CERES to JULIO CACERES
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'JULIO CACERES'
+ 
+where [Player Name] = 'Cï¿½CERES'  
+ 
+
+
+
+
+--CROATIA
+
+--This query updates player name from SUBAï¿½I? to DANIEL SUBASIC
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'DANIEL SUBASIC'
+ 
+where [Player Name] = 'SUBAï¿½I?'  
+
+
+--This query updates player name from MANDï¿½UKI? to MARIO MANDZUKIC
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'MARIO MANDZUKIC'
+ 
+where [Player Name] = 'MANDï¿½UKI?'  
+
+
+--This query updates player name from PERIï¿½I? to IVAN PERISIC
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'IVAN PERISIC'
+ 
+where [Player Name] = 'PERIï¿½I?'  
+
+
+
+
+--COSTA RICA
+
+
+--This query updates player name from UREï¿½A M. to MARCOS URENA
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'MARCOS URENA'
+ 
+where [Player Name] = 'UREï¿½A M.'  
+
+
+--This query updates player name from UMAï¿½A M. to MICHAEL UMANA
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'MICHAEL UMANA'
+ 
+where [Player Name] = 'UMAï¿½A M.'  
+
+
+--This query updates player name from BOLAï¿½OS C. to CHRISTIAN BOLANOS
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'CHRISTIAN BOLANOS'
+ 
+where [Player Name] = 'BOLAï¿½OS C.'  
+
+ 
+ 
+ --This query updates player name from  NUï¿½EZ V. to VICTOR NUNEZ
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'VICTOR NUNEZ'
+ 
+where [Player Name] = 'NUï¿½EZ V.'  
+
+
+
+--ARGENTINA
+
+--This query updates player name from  VERï¿½N to JUAN SEBASTIAN VERON
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'JUAN SEBASTIAN VERON'
+ 
+where [Player Name] = 'VERï¿½N'  
+
 
 
 
