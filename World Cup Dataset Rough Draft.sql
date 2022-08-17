@@ -22,77 +22,52 @@ Try count Players name and group by RoundID. Try count players and group by Matc
 --Update the table with correct names one by one 
 
 
-
-
-
-
-
-/*
-
-SELECT   distinct *
-FROM  Portfolio_Projects.dbo.WorldCupPlayers p
-JOIN Portfolio_Projects.dbo.WorldCupMatches m  ON  m.MatchID = p.MatchID
- where [Player Name]  like  '%ï¿½%'   and [Team Initials] = 'GER'
- group by 
-
-
---449 d
-
-/*
-Cameroon 
- PENSï¿½E - Michel PENSEE
- MAHOUVï¿½ - Marcel MAHOUVE
- OLEMBï¿½ - Salomon OLEMBE
- WOMï¿½ - Pierre WOME
-
- 
- MATTHï¿½US- 8
- Kï¿½PKE
- Hï¿½SSLER
- Wï¿½RNS
- Mï¿½LLER
- Hï¿½SSLER
- MATTHï¿½US
- Kï¿½PKE
- 
-
-*/
-
-
-
-
-
-
  
 SELECT  *
 FROM  Portfolio_Projects.dbo.WorldCupPlayers p
 JOIN Portfolio_Projects.dbo.WorldCupMatches m  ON  m.MatchID = p.MatchID
- where [Player Name]  like  '%ALLBï¿½CK%'   
+ where [Player Name]  like  '%KJï¿½R%'  
+
+
+
+
+
  
- --
-
- --
-
-
-select   *
-from Portfolio_Projects.dbo.WorldCupPlayers
-where [Player Name] = 'Ze ROBERTO' and [Shirt Number] = 11
- 
+SELECT   distinct *
+FROM  Portfolio_Projects.dbo.WorldCupPlayers p
+JOIN Portfolio_Projects.dbo.WorldCupMatches m  ON  m.MatchID = p.MatchID
+ where [Player Name]  like  '%ï¿½%'   and [Team Initials] = 'COL'
+ ORDER BY [Team Initials]  
 
 
---This query updates player name  from ETAMï¿½ to Lauren ETAME MAYER 
+
+--ARGENTINA
+
+--This query updates player name from C. ZUï¿½IGA to JUAN SEBASTIAN VERON
 Update  Portfolio_Projects.dbo.WorldCupPlayers
 set
-   [Player Name] = 'Lauren ETAME MAYER'
+   [Player Name] = 'JUAN SEBASTIAN VERON'
  
-where [Player Name] = 'ETAMï¿½'   
+where [Player Name] = 'C. ZUï¿½IGA'  
+
+
+--This query updates player name from BOLAï¿½O to MICHAEL UMANA
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'MICHAEL UMANA'
  
+where [Player Name] = 'BOLAï¿½O'  
 
 
-  
+--This query updates player name from BOLAï¿½OS C. to CHRISTIAN BOLANOS
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'CHRISTIAN BOLANOS'
+ 
+where [Player Name] = 'BOLAï¿½OS C.'  
 
 
-
+ 
 
  
  
