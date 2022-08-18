@@ -1,4 +1,18 @@
 
+--This query finds the misspelled names in the [Players Name] column 
+
+SELECT    *
+FROM  Portfolio_Projects.dbo.WorldCupPlayers p
+JOIN Portfolio_Projects.dbo.WorldCupMatches m  ON  m.MatchID = p.MatchID
+ where  [Player Name]  like  '%ï¿½%' and [Team Initials] = 'CMR'
+ ORDER BY [Team Initials] 
+
+
+
+
+
+
+
 --In these update queries, I used name snd shirt number to be careful incase there are players with smilar names and errors
 --This query updates player name Z� CARLOS to Ze Carlos 
 Update  Portfolio_Projects.dbo.WorldCupPlayers
@@ -871,5 +885,186 @@ where [Player Name] = 'VERï¿½N'
 
 
 
+--COLOMBIA
 
+--This query updates player name from C. ZUï¿½IGA to  JUAN ZUNIGA
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+
+set
+   [Player Name] = 'JUAN ZUNIGA'
+ 
+where [Player Name] = 'C. ZUï¿½IGA ' 
+
+
+
+--This query updates player name from BOLAï¿½O to  JORGE BOLANO
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'JORGE BOLANO'
+ 
+where [Player Name] = 'BOLAï¿½O'  
+
+
+
+
+
+--SWITZERLAND 
+
+
+--This query updates player name from ZUBERBï¿½HLER to PASCAL ZUBERBUHLER
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'PASCAL ZUBERBUHLER'
+ 
+where [Player Name] = 'ZUBERBï¿½HLER'  
+
+
+ 
+
+--This query updates player name from Wï¿½LFLI to MARCO WOLFLI
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+
+set
+   [Player Name] = 'MARCO WOLFLI'
+ 
+where [Player Name] = 'Wï¿½LFLI' 
+
+
+
+--This query updates player name from Bï¿½RKI to ROMAN BURKI
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'ROMAN BURKI'
+ 
+where [Player Name] = 'Bï¿½RKI'  
+
+
+ --This query updates player name from SCHï¿½R to  FABIAN SCHAR
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = 'FABIAN SCHAR'
+ 
+where [Player Name] = 'SCHï¿½R'  
+
+
+
+
+--CAMEROON
+
+
+--This query updates player name from PENSï¿½E to MICHEL PENSEE
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = ' MICHEL PENSEE'
+ 
+where [Player Name] = 'PENSï¿½E'  
+
+
+
+
+
+--URUGUAY
+
+
+--This query updates player name from R. MUï¿½OZ to RODRIGO MUNOZ
+Update  Portfolio_Projects.dbo.WorldCupPlayers
+set
+   [Player Name] = ' MICHEL PENSEE'
+ 
+where [Player Name] = 'R. MUï¿½OZ'  
+
+
+
+--This Query checks for misspelled names in the dataset. It shows the names with 'ï¿½'(spelling error) in them 
+
+SELECT distinct  *
+FROM       Portfolio_Projects.dbo.WorldCupPlayers p
+JOIN       Portfolio_Projects.dbo.WorldCupMatches m  ON  m.MatchID = p.MatchID
+WHERE      [Coach Name]   like  '%ï¿½%'  
+ORDER BY   [Team Initials]  
+
+ 
+--This Query updates this table with the correct names of misspelled [Coach Name] with the correct Names 
+
+--ARGENTINA
+
+--This Query updates [Coach Name] from Josï¿½ Pï¿½KERMAN (ARG) to JOSE PEKERMAN (ARG)
+
+UPDATE  Portfolio_Projects.dbo.WorldCupPlayers
+
+SET
+        [Coach Name]  = 'JOSE PEKERMAN (ARG)'
+ 
+WHERE   [Coach Name]  = 'Josï¿½ Pï¿½KERMAN (ARG)'  
+
+
+--ENGLAND
+
+--This Query updates [Coach Name] from Sven-Gï¿½ran ERIKSSON (SWE) to SVEN-GORAN ERIKSSON (SWE)
+UPDATE  Portfolio_Projects.dbo.WorldCupPlayers
+
+SET
+        [Coach Name]  = 'SVEN-GORAN ERIKSSON (SWE)'
+ 
+WHERE   [Coach Name]  = 'Sven-Gï¿½ran ERIKSSON (SWE)'  
+
+
+ 
+--GERMANY
+
+--This Query updates [Coach Name] from Jï¿½rgen KLINSMANN (GER) to JURGEN KLINSMANN (GER)
+
+UPDATE  Portfolio_Projects.dbo.WorldCupPlayers
+
+SET
+        [Coach Name]  = 'JURGEN KLINSMANN (GER)'
+ 
+WHERE   [Coach Name]  = 'Jï¿½rgen KLINSMANN (GER)'  
+
+ 
+--IRAN
+
+--This Query updates [Coach Name] from Carlos QUEIRï¿½S (POR) to CARLOS QUEIROZ (POR)
+
+UPDATE  Portfolio_Projects.dbo.WorldCupPlayers
+
+SET
+        [Coach Name]  = 'CARLOS QUEIROZ (POR)'
+ 
+WHERE   [Coach Name]  = 'Carlos QUEIRï¿½S (POR)'  
+
+
+
+
+
+--SWEDEN
+
+--This Query updates [Coach Name] from Lars LAGERBï¿½CK (SWE) to LARS LAGERBACK (SWE)
+
+UPDATE  Portfolio_Projects.dbo.WorldCupPlayers
+
+SET
+        [Coach Name]  = 'LARS LAGERBACK (SWE)'
+ 
+WHERE   [Coach Name]  = 'Lars LAGERBï¿½CK (SWE)'  
+
+
+
+
+
+--This Query shows the extra characters(") in front and behind of [Player Name]
+
+SELECT   *
+FROM     Portfolio_Projects.dbo.WorldCupPlayers p
+JOIN     Portfolio_Projects.dbo.WorldCupMatches m  ON  m.MatchID = p.MatchID
+ where   [Player Name]  like  '%"%'  
+
+
+--This Query removes the extra characters(") in front and behind of [Player Name]
+
+UPDATE  Portfolio_Projects.dbo.WorldCupPlayers
+
+SET
+        [Player Name]  = SUBSTRING([Player Name],2, LEN([Player Name]) - 3) 
+WHERE   [Player Name]  like  '%"%'     
 
