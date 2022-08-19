@@ -261,7 +261,24 @@ GROUP BY [Year],[Win conditions]
 ORDER By [Win conditions], [Year]
 
 
+--Which players had the longest careers?
 
+/*
+
+This Query shows the number of appearances made by each player at the WorldCup. 
+I used  this to measure the career lenght.i.e If they played 3 times in only 2010 Matches,
+they would appear only 3 times but if they appeared 3 times in 2010 and 2014, 
+they played longer than one who played only in 2010
+
+*/
+
+ SELECT [Player Name],  count( [Player Name]) AS [Number of Appearances]
+
+FROM   Portfolio_Projects.dbo.WorldCupPlayers p
+
+GROUP BY [Player Name]  
+
+order by [Number of Appearances] desc
 
 
 
