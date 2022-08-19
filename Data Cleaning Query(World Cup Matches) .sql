@@ -27,11 +27,12 @@ SET
        [Home Team Initials]   = SUBSTRING([Away Team Initials], 1, 3) ,--This query removes the first three initials from [Away Team Initials] to  [Home Team Initials]
        [Away Team Initials]   = SUBSTRING([Away Team Initials], 5, 7) --This query updates the table with the last three initials only
     
-where Stadium = '"FIFA World Cup Stadium' --Use "FIFA Stadium... instead of [Year] so corrrect entries are not affected
+WHERE  [Stadium]              = '"FIFA World Cup Stadium' --Use '"FIFA World Cup Stadium' instead of [Year] so corrrect entries are not affected
 
 
-
---This query removes the trailiing spaces in the table. 
+/*
+This query removes the trailiing spaces in the table. 
+*/
  
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]
      
@@ -146,48 +147,48 @@ WHERE [Away Team Name] like '%¿½%' --This is the common feature amongsts all t
 -- Query To Update The Stadium Column with correct values
 
 
- UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] -- From Stade Vï¿½lodrome to Stade Velodrome
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] -- From Stade Vï¿½lodrome to Stade Velodrome
 SET
       [Stadium]  = 'Stade Velodrome'
 	 
-where Stadium = 'Stade Vï¿½lodrome'
+where [Stadium]  = 'Stade Vï¿½lodrome'
 
 
 
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]-- From Nou Camp - Estadio Leï¿½n to Estadio Leon 
 SET
-      [Stadium]  = 'Estadio Leon '
+        [Stadium]  = 'Estadio Leon '
 	 
-where Stadium = 'Nou Camp - Estadio Leï¿½n'
+WHERE   [Stadium] = 'Nou Camp - Estadio Leï¿½n'
 
 
 
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--From  'Maracanï¿½ - Estï¿½dio Jornalista Mï¿½rio Filho' to  "Estadio do Maracana"
 SET
-      [Stadium]  = 'Estadio do Maracana'
+        [Stadium]  = 'Estadio do Maracana'
 	 
-where Stadium = 'Maracanï¿½ - Estï¿½dio Jornalista Mï¿½rio Filho'
+WHERE   [Stadium]  = 'Maracanï¿½ - Estï¿½dio Jornalista Mï¿½rio Filho'
 
 
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--From "Estadio Olï¿½mpico Chateau Carreras" to "Estadio Mario Alberto Kempes"
 SET
-      [Stadium]  = 'Estadio Mario Alberto Kempes'
+        [Stadium]  = 'Estadio Mario Alberto Kempes'
 	 
-where Stadium = 'Estadio Olï¿½mpico Chateau Carreras'
+where   [Stadium] = 'Estadio Olï¿½mpico Chateau Carreras'
 
 
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--From "Estadio Josï¿½ Marï¿½a Minella" to " Estadio Jose Maria Minella"
 SET
       [Stadium]  = ' Estadio Jose Maria Minella '
 	 
-where Stadium = 'Estadio Josï¿½ Marï¿½a Minella'
+where [Stadium]  = 'Estadio Josï¿½ Marï¿½a Minella'
 
 
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]-- From "Estadio Olï¿½mpico Universitario" to "Estadio Olïmpico Universitario"
 SET
       [Stadium]  = 'Estadio Olïmpico Universitario'
 	 
-where Stadium = 'Estadio Olï¿½mpico Universitario'
+where [Stadium] = 'Estadio Olï¿½mpico Universitario'
 
 
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--From "Estadio Municipal de Balaï¿½dos " to "Estadio Olïmpico Universitario"
@@ -195,61 +196,67 @@ UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--From "Estadio Municipal d
 SET
       [Stadium]  = 'Estadio Municipal de Balaïdos'
 	 
-where Stadium = 'Estadio Municipal de Balaï¿½dos'
+where [Stadium] = 'Estadio Municipal de Balaï¿½dos'
 
 
 
---Query To Update The City Column with correct values
+/*
+Query To Update The City Column with correct values
+*/
+
 
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--From Malmï¿½' to Malmo
 SET
-      City  = 'Malmo'
+        [City]  = 'Malmo'
 	 
-where City = 'Malmï¿½'
+WHERE   [City] = 'Malmï¿½'
 
 
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--From Norrkï¿½Ping to Norrkoping
 SET
-      City  = 'Norrkoping'
+        [City]  = 'Norrkoping'
 	 
-where City = 'Norrkï¿½Ping'
+where   [City] = 'Norrkï¿½Ping'
 
 
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--From Dï¿½Sseldorf to Dusseldorf
 SET
-      City  = 'Dusseldorf'
+        [City]  = 'Dusseldorf'
 	 
-where City = 'Dï¿½Sseldorf'
+WHERE   [City] = 'Dï¿½Sseldorf'
 
 
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--From La Coruï¿½A to La Coruna
 SET
-      City  = 'La Coruna'
+        [City]  = 'La Coruna'
 	 
-where City = 'La Coruï¿½A'
+WHERE   [City]  = 'La Coruï¿½A'
 
 
-
---Query To Update The Home Team Name Column with correct values
+/*
+Query To Update The Home Team Name Column with correct values
+*/
 
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--From  Cï¿½te d'Ivoire to Cote D'Ivoire
 SET
-      [Home Team Name]  = 'Cote d''Ivoire' --use double quotes because of the (') in cote d'ivoire which will return an error without the extra (')
-WHERE [Home Team Name] = 'Cï¿½te d''Ivoire' 
+        [Home Team Name]  = 'Cote d''Ivoire' --use double quotes because of the (') in cote d'ivoire which will return an error without the extra (')
+WHERE   [Home Team Name] = 'Cï¿½te d''Ivoire' 
 
 
-
- --Query To Update Away Team Name Column With Correct Values
+/*
+ Query To Update Away Team Name Column With Correct Values
+ */
  
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]-- Cï¿½te d'Ivoire To Cote d''Ivoire
 SET
-      [Away Team Name]  = 'Cote d''Ivoire'
+        [Away Team Name]  = 'Cote d''Ivoire'
 	 
-where [Away Team Name] = 'Cï¿½te d''Ivoire' -- use double quotes because of the (') in cote d'ivoire which will return an error without the extra (')
+WHERE   [Away Team Name] = 'Cï¿½te d''Ivoire' -- use double quotes because of the (') in cote d'ivoire which will return an error without the extra (')
 
 
-
---Query to check for extra characters in home and away columns
+/*
+Query to check for extra characters in home and away columns
+*/
 
 SELECT DISTINCT [Home Team Name] 
 FROM [Portfolio_Projects ].[dbo].[WorldCupMatches] 
@@ -298,13 +305,16 @@ WHERE   [Away Team Name] like '%"'
 
 /*
 NOTE: You tried removing both extra characters with the query below but it removed only the front characters and not the ones behind
- 
+      and you couldnt find out why.
+      
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
 SET
       
         [Away Team Name]  =  SUBSTRING([Away Team Name],7,LEN([Away Team Name])-1) 
 WHERE   [Away Team Name] like '"rn"">%"' 
 */
+
+
 
 /*
 Query To Change Outdated Stadium Names
@@ -323,42 +333,42 @@ Query To Change Outdated Stadium Names
 This query changes the name of the outdated stadiums to the new name.
 */
 
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to update stadium from "FIFA World Cup Stadium  Munich" to allianz arena
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--from "FIFA World Cup Stadium  Munich" to allianz arena
 SET
       [Stadium]  =  'Allianz Arena'
 WHERE Stadium = '"FIFA World Cup Stadium  Munich"'
 
 
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to update stadium from "FIFA World Cup Stadium  Cologne" to RheinEnergieStadio 
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--"FIFA World Cup Stadium  Cologne" to RheinEnergieStadio 
 SET
       [Stadium]  =  'RheinEnergieStadio'
 WHERE Stadium = '"FIFA World Cup Stadium  Cologne"'
 
 
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to update stadium from "FIFA World Cup Stadium  Dortmund" to Signal Iduna Park
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--"FIFA World Cup Stadium  Dortmund" to Signal Iduna Park
 SET
       [Stadium]  =  'Signal Iduna Park'
 WHERE City = 'Dortmund'-- we used city because we also needed to update Westfalenstadion(old name) to Signal Iduna Park 
 
 
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to update stadium from "FIFA World Cup Stadium  Frankfurt" to Signal Iduna Park
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--"FIFA World Cup Stadium  Frankfurt" to Signal Iduna Park
 SET
       [Stadium]  =  'Deutsche Bank Park'
 WHERE City = 'Frankfurt/Main'-- we used city because we also needed to update Waldstadion(old name) to Deutsche Bank Park(new name) 
 
 
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to update stadium from "FIFA World Cup Stadium  Hamburg" to Volksparkstadion
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--"FIFA World Cup Stadium  Hamburg" to Volksparkstadion
 SET
       [Stadium]  =  'Volksparkstadion'
 WHERE Stadium = '"FIFA World Cup Stadium  Hamburg"'
 
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to update stadium from "FIFA World Cup Stadium  Hanover" to HDI Arena
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--"FIFA World Cup Stadium  Hanover" to HDI Arena
 SET
       [Stadium]  =  'HDI Arena'
 WHERE City = 'Hanover'-- we used city because we also needed to update Niedersachsenstadion(old name) to  HDI Arena(new name) 
 
 
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to update stadium from "FIFA World Cup Stadium  Gelsenkirchen" to Veltins-Arena
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--"FIFA World Cup Stadium  Gelsenkirchen" to Veltins-Arena
 SET
       [Stadium]  =  'Veltins-Arena'
 WHERE Stadium = '"FIFA World Cup Stadium  Gelsenkirchen"'
@@ -367,30 +377,31 @@ WHERE Stadium = '"FIFA World Cup Stadium  Gelsenkirchen"'
 
 /*
 Query To Change Outdated Country Names
- This query changes outdated country names in the home team name and away team name column to their new names 
+This query changes outdated country names in the home team name and away team name column to their new names 
  */
+ 
 --Home Team Name
- UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to change germany fr to and fr 
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--from Germany FR to Germany 
 SET
       
       [Home Team Name]  = 'Germany'
 WHERE [Home Team Name] = 'Germany FR'  
 
 
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to change IR Iran to Iran
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--from IR Iran to Iran
 SET
       
       [Home Team Name]  = 'Iran'
 WHERE [Home Team Name] = 'IR Iran'  
 
 
- UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to change korea dpr to north korea
+ UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--from korea dpr to north korea
 SET
       
       [Home Team Name]  = 'North Korea'
 WHERE [Home Team Name] = 'Korea DPR'  
 
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to change Zaire to Congo DR 
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--from Zaire to Congo DR 
 SET
       
       [Home Team Name]  = 'Congo DR'
@@ -398,14 +409,14 @@ WHERE [Home Team Name] = 'Zaire'
 
 
 
- UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to change korea republic to south korea
+ UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--from korea republic to south korea
 SET
       
       [Home Team Name]  = 'South Korea'
 WHERE [Home Team Name] = 'Korea Republic'  
 
 
- UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to change China PR to China 
+ UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--from China PR to China 
 SET
       
       [Home Team Name]  = 'China'
@@ -415,7 +426,7 @@ WHERE [Home Team Name] = 'China PR'
 
 --Away Team Name
 
- UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to change germany to germany fr 
+ UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--from germany to germany fr 
 SET
       
       [Away Team Name]  = 'Germany'
@@ -423,50 +434,54 @@ WHERE [Away Team Name] = 'Germany FR'
 
 
 
- UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to change IR Iran to Iran
+ UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--from IR Iran to Iran
 SET
       
      [Away Team Name]  = 'Iran'
 WHERE [Away Team Name] = 'IR Iran'  
 
 
- UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to change korea dpr to north korea
+ UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--from korea dpr to north korea
 SET
       
      [Away Team Name]  = 'North Korea'
 WHERE [Away Team Name] = 'Korea DPR'  
 
 
- UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to change korea republic to south korea
+ UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--from korea republic to south korea
 SET
       
       [Away Team Name]  = 'South Korea'
-WHERE [Away Team Name] = 'Korea Republic'  
+WHERE [Away Team Name]  = 'Korea Republic'  
 
 
- UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to change China PR to China 
+ UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--from China PR to China 
 SET
       
       [Away Team Name]  = 'China'
-WHERE [Away Team Name] = 'China PR'  
+WHERE [Away Team Name]  = 'China PR'  
 
-UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--query to change  Zaire to Congo DR 
+
+UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]--from Zaire to Congo DR 
 SET
       
-      [Away Team Name]   = 'Congo DR'
-WHERE   [Away Team Name] = 'Zaire'
+        [Away Team Name]   = 'Congo DR'
+WHERE   [Away Team Name]   = 'Zaire'
 
 
-
---This Query is Used To Checks For Spaces In The Table 
+/*
+This Query is Used To Checks For Spaces In The Table 
+*/
 
 SELECT * 
 FROM  [Portfolio_Projects ].[dbo].[WorldCupMatches] 
 WHERE CHARINDEX(' ',Stadium) > 0  
 
 
+/*
+Query to update the match for third place in stage column and make them uniform 
+*/
 
---Query to update the match for third place in stage column and make them uniform 
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCupMatches]   
 SET   
       [Stage]  =  'Match for third place'
@@ -475,59 +490,68 @@ WHERE [Stage] like '%Third%'
 
 
 
+/*
+WIN CONDITIONS 
 
---WIN CONDITIONS 
+This query updates [win conditions] to show home team name home team won 
+*/
+
+UPDATE  Portfolio_Projects.dbo.WorldCupMatches
+SET
+        [Win conditions] = [Home Team Name] 
+
+WHERE   [Home Team Goals] > [Away Team Goals]
 
 
---This query updates [win conditions] to show home team name + won where home team won 
+/*
+This query updates [win conditions] to show away team name away team won 
+*/
+
 UPDATE Portfolio_Projects.dbo.WorldCupMatches
 SET
-    [Win conditions] = concat([Home Team Name], ' ', 'wins')
+       [Win conditions] = [Away Team Name]  
+       
+WHERE  [Away Team Goals] > [Home Team Goals]
 
-where [Home Team Goals] > [Away Team Goals]
 
 
 
---This query updates [win conditions] to show away team name + won where away team won 
-UPDATE Portfolio_Projects.dbo.WorldCupMatches
+/*
+This query updates [win conditions] to show away team name + won where away team won except the rows that are wins by penalty 
+*/
+
+UPDATE  Portfolio_Projects.dbo.WorldCupMatches
 SET
-    [Win conditions] = concat([Away Team Name], ' ', 'wins')
+        [Win conditions] = 'Draw'
 
-where [Away Team Goals] > [Home Team Goals]
-
-
-
-
-
---This query updates [win conditions] to show away team name + won where away team won except the rows that are wins by penalty 
-UPDATE Portfolio_Projects.dbo.WorldCupMatches
-SET
-    [Win conditions] = 'Draw'
-
-where [Win conditions]  not like ('%penalties%') and [Away Team Goals] = [Home Team Goals]
+WHERE   [Win conditions]  not like ('%penalties%') and [Away Team Goals] = [Home Team Goals]
 
 
 
 --This query checks for penalty wins that the team that won wasnt specified 
-select *
 
-from Portfolio_Projects.dbo.WorldCupMatches
-where    [Win conditions] like 'win on penalties%'
+SELECT  *
+
+FROM   Portfolio_Projects.dbo.WorldCupMatches
+WHERE  [Win conditions] like 'win on penalties%'
 
 
 --This query updates [win conditions] to show home team name + win on penalties where the home team won 
-UPDATE Portfolio_Projects.dbo.WorldCupMatches
-SET
-    [Win conditions] = concat([Home Team Name], ' ', [Win conditions])
 
-where [Win conditions] in( 'win on penalties (5 - 4)', 'win on penalties (4 - 3)')
+UPDATE  Portfolio_Projects.dbo.WorldCupMatches
+SET
+        [Win conditions] = concat([Home Team Name], ' ', [Win conditions])
+
+WHERE   [Win conditions] in( 'win on penalties (5 - 4)', 'win on penalties (4 - 3)')
+
 
 --This query updates [win conditions] to show away team name + win on penalties where the away team won penalties
-UPDATE Portfolio_Projects.dbo.WorldCupMatches
-SET
-    [Win conditions] = concat([Away Team Name], ' ', [Win conditions])
 
-where [Win conditions] in( 'win on penalties (2 - 3)', 'win on penalties (3 - 4)')
+UPDATE  Portfolio_Projects.dbo.WorldCupMatches
+SET
+        [Win conditions] = concat([Away Team Name], ' ', [Win conditions])
+ 
+WHERE   [Win conditions] in( 'win on penalties (2 - 3)', 'win on penalties (3 - 4)')
 
 
 
