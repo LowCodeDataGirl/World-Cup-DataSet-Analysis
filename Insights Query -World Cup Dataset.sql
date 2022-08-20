@@ -1,22 +1,20 @@
---Do Certain Cities Draw Bigger Crowds
+/*
+DO CERTAIN CITIES DRAW BIGGER CROWDS 
 
---The Top results in this query will show which cities had the most attendance on average.
-
+The Top results in this query will show which cities had the most attendance on average.
+Average was used instead of sum so cities that have hosted the world cup lots of times are
+not at an advantage(this would occur with SUM
+*/
 SELECT   AVG(CAST(Attendance as int)) as [AvgCityAtt],[City]  
 FROM     [Portfolio_Projects ].[dbo].[WorldCupMatches] 
 GROUP BY [City]
 ORDER BY [AvgCityAtt] DESC
 
 
---The Top results in this query will show which cities have the most crowd on average
-
-SELECT   SUM(CAST(Attendance as int)) AS SumCityAtt, [City]
-FROM     [Portfolio_Projects ].[dbo].[WorldCupMatches]
-GROUP BY [City]
-ORDER BY [SumCityAtt] DESC
-
-
-
+ 
+ /*
+ HOW HAS ATTENDANCE TRENDED OVER TIME 
+ 
 --How Has Attendance Trended Over Time
 (This query gives the attendance total per year)
 
@@ -216,74 +214,50 @@ ORDER BY  [2nd Half Most Offensive Teams]  DESC -- This orders the results in de
 
 
 
---Which teams have won the most games (check if you can group similar items like germany and germany dr)
+/*  
+WHICH TEAMS HAVE WON THE MOST GAMES 
 
-select [Win conditions],COUNT([Win conditions]) as NumberOfWins
-from Portfolio_Projects.dbo.WorldCupMatches
-where [Win conditions] not in ('Draw' )
-
+This query counts the number of wins of each countries and orders them
+from the highest to lowest number 
+*/
+SELECT   [Win conditions], COUNT([Win conditions]) as NumberOfWins
+FROM     Portfolio_Projects.dbo.WorldCupMatches
+WHERE    [Win conditions] not in ('Draw' )
 GROUP BY [Win conditions]
-
-order by COUNT([Win conditions]) desc
-
+ORDER BY COUNT([Win conditions]) desc
 
 
+ 
+--THIS QUERY UPDATES THE DRAWS IN THE [Win Conditions] COLUMN(Confirm and move this query to data cleaning) 
 
-
-
---Which teams have won the most games  
-
-select [Win conditions],COUNT([Win conditions]) as NumberOfWins
-from Portfolio_Projects.dbo.WorldCupMatches
-where [Win conditions] not in ('Draw' )
-
-GROUP BY [Win conditions]
-
-order by COUNT([Win conditions]) desc
-
-
---This query updates the draws that did
 UPDATE Portfolio_Projects.dbo.WorldCupMatches
 SET
-    [Win conditions] = 'Draw'
+       [Win conditions] = 'Draw'
 
-where [Away Team Goals] = [Home Team Goals]
-
-
+WHERE  [Away Team Goals] = [Home Team Goals]
 
 
---How has number of wins by country trended over time?
+/*
+HOW HAS THE NUMBER OF WINS PER COUNTRY TRENDED OVER TIME ?
 
+This Query shows number of wins of each country.
+*/
 SELECT   [Year],[Win conditions] , COUNT([Win conditions]) as NumberOfWins
 FROM     [Portfolio_Projects ].[dbo].[WorldCupMatches] 
-where [Win conditions] not in ('Draw' )
+WHERE    [Win conditions] not in ('Draw' )
 GROUP BY [Year],[Win conditions]
 ORDER By [Win conditions], [Year]
 
 
---Which players had the longest careers?
-
-/*
+/* 
+WHICH PLAYERS HAD THE LONGEST CAREERS?
 
 This Query shows the number of appearances made by each player at the WorldCup. 
-I used  this to measure the career lenght.i.e If they played 3 times in only 2010 Matches,
-they would appear only 3 times but if they appeared 3 times in 2010 and 2014, 
-they played longer than one who played only in 2010
-
+I used  this to measure the career lenght.(This mmeans that if the number of recurrence of the player
+shows how long they played in the World Cup
 */
-
- SELECT [Player Name],  count( [Player Name]) AS [Number of Appearances]
-
-FROM   Portfolio_Projects.dbo.WorldCupPlayers p
-
-GROUP BY [Player Name]  
-
-order by [Number of Appearances] desc
-
-
-
-
-
-
-
+SELECT    [Player Name],  COUNT( [Player Name]) AS [Number of Appearances]
+FROM      Portfolio_Projects.dbo.WorldCupPlayers p
+GROUP BY  [Player Name]  
+ORDER BY  [Number of Appearances] desc
 
