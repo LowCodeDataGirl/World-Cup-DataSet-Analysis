@@ -15,9 +15,9 @@ ORDER BY [AvgCityAtt] DESC
  /*
  HOW HAS ATTENDANCE TRENDED OVER TIME 
  
---How Has Attendance Trended Over Time
+How Has Attendance Trended Over Time
 (This query gives the attendance total per year)
-
+*/
 SELECT   [Year], SUM(cast (Attendance as int)) AS SumYearAtt
 FROM     [Portfolio_Projects ].[dbo].[WorldCupMatches] 
 GROUP BY [Year]
