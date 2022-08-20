@@ -2,7 +2,7 @@
 
 /* 
 Query to Update country Names
-This Query Updates the table with the correct country names
+This Query Updates the table with outdated country names to the correct country names
 */
 
 UPDATE  [Portfolio_Projects ].[dbo].[WorldCups_preview]
