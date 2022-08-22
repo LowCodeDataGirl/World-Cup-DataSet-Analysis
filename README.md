@@ -1,12 +1,13 @@
  
 # Maven Analytics World Cup Dataset Analysis
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
 
 While studying SQL, I forget most of the concepts learned once I looked away from them. 
 This project was my chance to practice what I have learned and to make sure it sticks.
 
 Despite the fact that I enjoyed this project and learned a lot, I found it frustrating in the beginning because I had to go to Google a lot and had no idea how to use StackOverflow.
+
+When I started the analysis, I knew nothing about football (zilch) or how world cup tournaments were held. But the1stt (avid football fan)  helped me understand the rules of football and how teams qualified for the World Cup
 
 This dataset contains all World Cup matches and players from 1930-2014. I wanted to draw insights from this data, and thankfully, Maven Analytics suggested questions that would allow me to do that.
 
@@ -21,12 +22,13 @@ Here is a step-by-step guide for installing the Microsoft SQL Server Management 
 - [Microsoft SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
 ## Dataset
 The World Cup Dataset contains three tables namely 
-- [World Cup Matches] : It consists of 836 rows and 22 columns 
-- [World Cup Players] : It consists of X rows and Y columns 
+- [World Cup Matches] : It consists of 852 rows and 20 columns 
+- [World Cup Players] : It consists of 37,784 rows and 9 columns 
 - [World Cup Preview] : It consists of 20 rows and 10 columns 
 ##  Dataset Schema 
 World Cup Matches
 
+All columns in this table have a data type of Varchar(50) , meaning that they can each store values up to 50 characters long.
 - Year
 - Datetime
 - Stage
@@ -51,6 +53,9 @@ World Cup Matches
 - 2nd Half Away Goals
 
 World Cup Players
+
+All columns in this table have a data type of Varchar(50) , meaning that they can each store values up to 50 characters long.
+
 - RoundID
 - MatchID
 - Team Initials
@@ -62,6 +67,9 @@ World Cup Players
 - Event
 
 World Cup Preview
+
+All columns in this table have a data type of Varchar(50) , meaning that they can each store values up to 50 characters long.
+
 - Year
 - Country
 - Winner
@@ -73,10 +81,20 @@ World Cup Preview
 - MatchesPlayed
 - Attendance
 ## SQL Skills Used 
-- Common Table Expressions (CTE)
+
 - Subqueries
+- Unions
+- Windows Functions
+- Aggregate Functions
+- Converting Data Types
+- Common Table Expressions (CTE)
+- Conditional filters(AND, OR)
+
 
 ## Data Insights 
+
+This dataset explored many questions namely:
+
  1. How has attendance trended over time? (both average per game and total per year)
 
 2. Do certain cities tend to draw bigger crowds?
@@ -95,7 +113,7 @@ World Cup Preview
 ## Documentation
 
 
-A step-by-step guide is included in this [documentation](https://linktodocumentation), as well as detailed information about the analysis process.
+A step-by-step guide is included in this [documentation](lowcodedatagirl.medium.com), as well as detailed information about the analysis process.
 
 ## FAQ
 
@@ -123,12 +141,12 @@ Distributed under the no License. See LICENSE.txt for more information.
 ## Acknowledgements
 
 - [Maven Analytics](https://app.mavenanalytics.io/login)
-- [Kelvin Esosa]()
+- [the1stt](https://github.com/the1stt?tab=repositories)
 - [StackOverflow](https://stackoverflow.com/)
 
 
 ## Show Your Support
-Please ⭐️ this repository if this project helped you!
+Please ⭐️ this repository if this project helped you or [buy me coffee]( https://www.buymeacoffee.com/lowcodedatagirl)!
 
 
  
