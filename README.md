@@ -8,7 +8,7 @@ This project was my chance to practice what I have learned and to make sure it s
 
 Despite the fact that I enjoyed this project and learned a lot, I found it frustrating in the beginning because I had to go to Google a lot and had no idea how to use StackOverflow.
 
-When I started the analysis, I knew nothing about football (zilch) or how world cup tournaments were held. But the1stt (avid football fan)  helped me understand the rules of football and how teams qualified for the World Cup
+When I started the analysis, I knew nothing about football (zilch) or how world cup tournaments were held. But [@the1stt](github.com/the1stt) (avid football fan)  helped me understand the rules of football and how teams qualified for the World Cup
 
 This dataset contains all World Cup matches and players from 1930-2014. I wanted to draw insights from this data, and thankfully, Maven Analytics suggested questions that would allow me to do that.
 
