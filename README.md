@@ -139,6 +139,7 @@ Yes you can !
 ## License
 
 Distributed under the no License. See LICENSE.txt for more information.
+
 ## Acknowledgements
 
 - [Maven Analytics](https://app.mavenanalytics.io/login)
